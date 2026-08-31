@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minsoo Park</title>
+<meta name="description" content="Minsoo Park is an undergraduate researcher at MoAI Lab, SeoulTech, working on learning-based robot manipulation, imitation learning, and vision-language-action models.">
+<meta name="keywords" content="Robot Manipulation, Imitation Learning, Vision-Language-Action Models, Sim-to-Real, Robotics">
+
+<meta property="og:title" content="Minsoo Park">
+<meta property="og:description" content="Undergraduate researcher working on learning-based robot manipulation.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#F6F7F9;
+    --card:#FFFFFF;
+    --ink:#1B2029;
+    --ink-soft:#4A5361;
+    --muted:#79828F;
+    --rule:#DFE3E8;
+    --accent:#6E3FA6;
+    --accent-soft:#EFE7F7;
+
+    --sans:"IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    --serif:"IBM Plex Serif", Georgia, serif;
+
+    --col:1080px;
+    --meta-w:200px;
+    --gap:48px;
+  }
+
+  *{box-sizing:border-box}
+
+  html{-webkit-text-size-adjust:100%}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{
+    max-width:var(--col);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(110,63,166,.3)}
+  a:hover{border-bottom-color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  h1,h2,h3,.sans{font-family:var(--sans)}
+
+  /* ---------- intro ---------- */
+
+  .intro{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:var(--gap);
+    padding:88px 0 64px;
+    align-items:start;
+  }
+
+  .portrait{
+    width:100%;
+    aspect-ratio:1/1.15;
+    object-fit:cover;
+    border-radius:3px;
+    background:var(--accent-soft);
+    display:block;
+  }
+
+  .portrait-caption{
+    margin-top:14px;
+    font-family:var(--sans);
+    font-size:13.5px;
+    line-height:1.6;
+    color:var(--muted);
+  }
+
+  h1{
+    margin:0;
+    font-size:38px;
+    font-weight:600;
+    letter-spacing:-.02em;
+    line-height:1.1;
+  }
+
+  .vision{
+    margin:26px 0 22px;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:21px;
+    line-height:1.5;
+    color:var(--ink);
+    padding-left:20px;
+    border-left:2px solid var(--accent);
+  }
+
+  .intro p{margin:0 0 18px;max-width:66ch;color:var(--ink-soft)}
+  .intro p strong{color:var(--ink);font-weight:500}
+
+  .interests{
+    margin-top:30px;
+    padding-top:22px;
+    border-top:1px solid var(--rule);
+    font-family:var(--sans);
+    font-size:15px;
+    color:var(--ink);
+  }
+  .interests span{
+    display:block;
+    font-size:13.5px;
+    color:var(--muted);
+    margin-bottom:6px;
+  }
+
+  /* ---------- section headings ---------- */
+
+  .section{padding:56px 0}
+  .section + .section{border-top:1px solid var(--rule)}
+
+  h2{
+    margin:0 0 36px;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:.01em;
+    color:var(--muted);
+  }
+
+  /* ---------- projects ---------- */
+
+  .project{
+    display:grid;
+    grid-template-columns:var(--meta-w) 1fr;
+    gap:var(--gap);
+    padding:44px 0;
+  }
+  .project:first-of-type{padding-top:0}
+  .project + .project{border-top:1px solid var(--rule)}
+
+  .meta{font-family:var(--sans);font-size:14px;line-height:1.6}
+  .meta .org{color:var(--ink);font-weight:500;display:block;margin-bottom:2px}
+  .meta .when{color:var(--muted);display:block}
+  .meta .tags{
+    margin-top:18px;
+    padding-top:16px;
+    border-top:1px solid var(--rule);
+    color:var(--muted);
+    font-size:13.5px;
+  }
+
+  .project h3{
+    margin:0 0 16px;
+    font-size:25px;
+    font-weight:600;
+    letter-spacing:-.015em;
+    line-height:1.25;
+  }
+
+  .project p{margin:0 0 18px;max-width:66ch;color:var(--ink-soft)}
+
+  .media{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:14px;
+    margin-top:26px;
+  }
+
+  .media video{
+    width:100%;
+    display:block;
+    border-radius:3px;
+    background:var(--ink);
+  }
+
+  /* Placeholder shown until a real video file is dropped in.
+     Delete the .slot div and uncomment the <video> tag above it. */
+  .slot{
+    aspect-ratio:16/10;
+    border:1px dashed var(--rule);
+    border-radius:3px;
+    background:var(--card);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:16px;
+    font-family:var(--sans);
+    font-size:13px;
+    color:var(--muted);
+  }
+
+  /* ---------- news ---------- */
+
+  .news{list-style:none;margin:0;padding:0}
+  .news li{
+    display:grid;
+    grid-template-columns:var(--meta-w) 1fr;
+    gap:var(--gap);
+    padding:16px 0;
+  }
+  .news li + li{border-top:1px solid var(--rule)}
+  .news .date{font-family:var(--sans);font-size:14px;color:var(--muted)}
+  .news .what{max-width:66ch;color:var(--ink-soft)}
+
+  /* ---------- contact ---------- */
+
+  .contact{
+    display:grid;
+    grid-template-columns:var(--meta-w) 1fr;
+    gap:var(--gap);
+    padding:56px 0 96px;
+    border-top:1px solid var(--rule);
+  }
+  .contact h2{margin:0}
+  .contact p{margin:0 0 10px;color:var(--ink-soft)}
+
+  footer{
+    border-top:1px solid var(--rule);
+    padding:24px 0 40px;
+    font-family:var(--sans);
+    font-size:13px;
+    color:var(--muted);
+  }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width:820px){
+    :root{--gap:28px}
+    .wrap{padding:0 22px}
+    .intro{grid-template-columns:1fr;padding:56px 0 40px}
+    .portrait{max-width:180px;aspect-ratio:1/1.15}
+    h1{font-size:32px}
+    .vision{font-size:19px}
+    .project,.news li,.contact{grid-template-columns:1fr;gap:18px}
+    .meta .tags{margin-top:12px;padding-top:12px}
+    .news li{padding:14px 0}
+    .contact{padding:40px 0 72px}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="intro">
+    <div>
+      <!-- Replace with your own photo: assets/profile.jpg -->
+      <img class="portrait" src="assets/profile.jpg" alt="Minsoo Park">
+      <div class="portrait-caption">
+        Seoul, Korea
+      </div>
+    </div>
+
+    <div>
+      <h1>Minsoo Park</h1>
+
+      <!-- Swap this line for your own -->
+      <p class="vision">Robots that learn from little and work where it's messy.</p>
+
+      <p>
+        I'm an undergraduate researcher working on <strong>learning-based robot
+        manipulation</strong>. I'm interested in what it actually takes to move a policy
+        out of simulation and into the real world, where demonstrations are scarce,
+        tasks unfold over many stages, and small errors compound.
+      </p>
+
+      <p>
+        I'm currently an Undergraduate Researcher at <strong>MoAI Lab</strong>
+        (Motion &amp; Action Intelligence Lab) at SeoulTech, which I joined in January 2026.
+        Over the summer I was a Research Intern at the
+        <strong>Field Robotics Laboratory, ETRI</strong>, where I fine-tuned a
+        vision-language-action model on simulated demonstrations and deployed it on a
+        real robot arm. I also lead a capstone project on imitation learning for
+        long-horizon dual-arm manipulation, supported by the Hanium ICT Mentoring Program.
+      </p>
+
+      <p>
+        I'm completing my BS in Intelligent Robotics Engineering at
+        <strong>Seoul National University of Science and Technology</strong>
+        (expected Feb 2027, GPA 3.92/4.5).
+      </p>
+
+      <p>
+        My goal is to build manipulation policies that hold up outside the lab: learning
+        efficiently from limited data, recovering from their own failures, and staying
+        reliable across the long sequences of steps that real tasks demand.
+      </p>
+
+      <div class="interests">
+        <span>Research interests</span>
+        Robot Manipulation, Imitation Learning, Vision-Language-Action Models
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section">
+    <h2>Projects</h2>
+
+    <!-- Project 1 -->
+    <article class="project">
+      <div class="meta">
+        <span class="org">Field Robotics Laboratory, ETRI</span>
+        <span class="when">Research Internship, Summer 2026</span>
+        <div class="tags">π0, GR00T N1.5, LoRA, Isaac Sim, SO-101</div>
+      </div>
+
+      <div>
+        <h3>Sim-to-Real Fine-tuning of Vision-Language-Action Models</h3>
+
+        <p>
+          I looked at whether a vision-language-action policy trained only on simulated
+          demonstrations can run on real hardware. I collected demonstrations in Isaac Sim
+          through leader-follower teleoperation, fine-tuned π0 with LoRA so that training
+          fit on a single RTX 3090 instead of a multi-GPU cluster, and deployed the result
+          on a physical SO-101 arm picking up a marker and dropping it into a cup.
+        </p>
+
+        <p>
+          Success in simulation climbed to 80% as I added demonstrations and tuned how far
+          ahead the policy predicts, but the same policy reached only about 30% on the real
+          robot. Mixing real-world demonstrations into training did not close that gap,
+          which pointed at the coverage of the data and the absence of recovery behaviour
+          rather than sheer volume. I also trained GR00T N1.5 under the same conditions to
+          see how its separated vision-language and action modules compare with π0's single
+          unified model.
+        </p>
+
+        <div class="media">
+          <!-- <video src="assets/video/etri-sim.mp4" controls muted playsinline preload="metadata"></video> -->
+          <div class="slot">Isaac Sim rollout</div>
+          <!-- <video src="assets/video/etri-real.mp4" controls muted playsinline preload="metadata"></video> -->
+          <div class="slot">Real SO-101 deployment</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 2 -->
+    <article class="project">
+      <div class="meta">
+        <span class="org">Capstone Design, SeoulTech</span>
+        <span class="when">Hanium ICT Mentoring, 2026 – present</span>
+        <div class="tags">ACT, Imitation Learning, Dual-arm manipulation, YOLO</div>
+      </div>
+
+      <div>
+        <h3>Imitation Learning for Long-Horizon Manipulation</h3>
+
+        <p>
+          A dual-arm robot picks up an item, scans its barcode, and sets it down. The task
+          only counts as finished if several stages happen in the right order, and that
+          turned out to be where the difficulty lives. An ACT policy trained on
+          demonstrations learned to scan correctly, then went back and scanned again, and
+          kept doing so indefinitely.
+        </p>
+
+        <p>
+          The camera views on the way to the scanner and on the way back are nearly
+          identical, so the policy had no way to tell which half of the task it was in.
+          I'm now conditioning the policy on an explicit stage signal, so that states which
+          look the same but call for opposite actions can be told apart.
+        </p>
+
+        <div class="media">
+          <!-- <video src="assets/video/capstone-loop.mp4" controls muted playsinline preload="metadata"></video> -->
+          <div class="slot">Repeated-scan failure</div>
+          <!-- <video src="assets/video/capstone-fixed.mp4" controls muted playsinline preload="metadata"></video> -->
+          <div class="slot">Stage-conditioned policy</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 3 -->
+    <article class="project">
+      <div class="meta">
+        <span class="org">MoAI Lab, SeoulTech</span>
+        <span class="when">Undergraduate Researcher, Jan 2026 – present</span>
+        <div class="tags">Qwen, Vision-Language Models, Jetson Thor, vLLM</div>
+      </div>
+
+      <div>
+        <h3>Vision-Language Models as Success Detectors for Data Collection</h3>
+
+        <p>
+          A policy trained on a few dozen demonstrations succeeds sometimes and fails often,
+          and someone has to sort the resulting episodes before they can be reused for
+          training. I built a pipeline that hands that judgment to a vision-language model
+          instead. A quantized Qwen model runs on a Jetson Thor next to the robot and labels
+          each rollout as success, failure, or too ambiguous to call, keeping only the
+          episodes worth learning from.
+        </p>
+
+        <p>
+          How the question is posed matters more than I expected. Giving the model a
+          reference image of the finished task, rather than describing success in words,
+          made its verdicts markedly more reliable. The model can also state why an episode
+          failed, which turns rejected data into something diagnostic rather than discarded.
+        </p>
+
+        <div class="media">
+          <!-- <video src="assets/video/moai-detection.mp4" controls muted playsinline preload="metadata"></video> -->
+          <div class="slot">Success / failure judgments</div>
+          <!-- <video src="assets/video/moai-pipeline.mp4" controls muted playsinline preload="metadata"></video> -->
+          <div class="slot">Collection pipeline</div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ NEWS ============ -->
+  <section class="section">
+    <h2>News</h2>
+    <ul class="news">
+      <li>
+        <span class="date">Aug 2026</span>
+        <span class="what">
+          Completed my research internship at the Field Robotics Laboratory, ETRI.
+        </span>
+      </li>
+      <!-- Add the Hanium selection month here once confirmed:
+      <li>
+        <span class="date">Apr 2026</span>
+        <span class="what">Selected for the Hanium ICT Mentoring Program.</span>
+      </li>
+      -->
+      <li>
+        <span class="date">Jan 2026</span>
+        <span class="what">
+          Joined MoAI Lab at SeoulTech as an undergraduate researcher.
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact">
+    <h2>Contact</h2>
+    <div>
+      <p><a href="mailto:alstneowkd@naver.com">alstneowkd@naver.com</a></p>
+      <p><a href="https://github.com/">GitHub</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  © 2026 Minsoo Park
+</footer>
+
+</body>
+</html>
