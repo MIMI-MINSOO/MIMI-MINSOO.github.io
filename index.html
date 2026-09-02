@@ -328,9 +328,9 @@
         <p>
           I looked at whether a vision-language-action policy trained only on simulated
           demonstrations can run on real hardware. I collected demonstrations in Isaac Sim
-          through leader-follower teleoperation, fine-tuned π0 with LoRA so that training
-          fit on a single RTX 3090 instead of a multi-GPU cluster, and deployed the result
-          on a physical SO-101 arm picking up a marker and dropping it into a cup.
+          through leader-follower teleoperation, then worked hands-on with vision-language-action
+          models — training and running inference myself to deploy a fine-tuned π0 policy on a
+          physical SO-101 arm picking up a marker and dropping it into a cup.
         </p>
 
         <p>
@@ -340,7 +340,9 @@
           which pointed at the coverage of the data and the absence of recovery behaviour
           rather than sheer volume. I also trained GR00T N1.5 under the same conditions to
           see how its separated vision-language and action modules compare with π0's single
-          unified model.
+          unified model. Beyond this, I experimented with starVLA and MimicGen for robot
+          action data augmentation, and explored reinforcement-learning-based fine-tuning as
+          an alternative approach.
         </p>
 
         <div class="media">
@@ -355,7 +357,7 @@
       <div class="meta">
         <span class="org">Capstone Design, SeoulTech</span>
         <span class="when">Hanium ICT Mentoring, Dec 2025 – present</span>
-        <div class="tags">ACT, Imitation Learning, Dual-arm manipulation, YOLO</div>
+        <div class="tags">Diffusion Policy, Imitation Learning, Dual-arm manipulation, YOLO</div>
       </div>
 
       <div>
@@ -364,7 +366,7 @@
         <p>
           A dual-arm robot picks up an item, scans its barcode, and sets it down. The task
           only counts as finished if several stages happen in the right order, and that
-          turned out to be where the difficulty lives. An ACT policy trained on
+          turned out to be where the difficulty lives. A Diffusion Policy trained on
           demonstrations learned to scan correctly, then went back and scanned again, and
           kept doing so indefinitely.
         </p>
