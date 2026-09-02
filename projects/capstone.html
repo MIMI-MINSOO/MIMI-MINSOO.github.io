@@ -27,6 +27,14 @@
       <h3>Imitation Learning for Long-Horizon Manipulation</h3>
 
       <p>
+        The platform is a 16-degree-of-freedom system: two 7-DOF arms plus a 2-DOF neck
+        joint I designed and built myself to give the cameras an active view of the
+        workspace. I collected teleoperation demonstrations and ran both training and
+        inference across all 16 degrees of freedom together, rather than treating the
+        neck as a fixed camera mount.
+      </p>
+
+      <p>
         A dual-arm robot picks up an item, scans its barcode, and sets it down. The task
         only counts as finished if several stages happen in the right order, and that
         turned out to be where the difficulty lives. A Diffusion Policy trained on
