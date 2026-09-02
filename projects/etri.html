@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sim-to-Real Fine-tuning of Vision-Language-Action Models — Minsoo Park</title>
+<meta name="description" content="Fine-tuning π0 and GR00T N1.5 on Isaac Sim demonstrations and deploying on a physical SO-101 arm, ETRI Field Robotics Laboratory.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<main class="wrap">
+  <a class="back-link" href="../index.html">&larr; Projects</a>
+
+  <article class="project detail">
+    <div class="meta">
+      <span class="org">Field Robotics Laboratory, ETRI</span>
+      <span class="when">Research Internship, Summer 2026</span>
+      <div class="tags">π0, GR00T N1.5, Isaac Sim, SO-101</div>
+    </div>
+
+    <div>
+      <h3>Sim-to-Real Fine-tuning of Vision-Language-Action Models</h3>
+
+      <p>
+        I looked at whether a vision-language-action policy trained only on simulated
+        demonstrations can run on real hardware. I collected demonstrations in Isaac Sim
+        through leader-follower teleoperation, then worked hands-on with vision-language-action
+        models — training and running inference myself to deploy a fine-tuned π0 policy on a
+        physical SO-101 arm picking up a marker and dropping it into a cup.
+      </p>
+
+      <p>
+        Success in simulation climbed to 80% as I added demonstrations and tuned how far
+        ahead the policy predicts, but the same policy reached only about 30% on the real
+        robot. Mixing real-world demonstrations into training did not close that gap,
+        which pointed at the coverage of the data and the absence of recovery behaviour
+        rather than sheer volume.
+      </p>
+
+      <p>
+        I also trained GR00T N1.5 under the same conditions to see how its separated
+        vision-language and action modules compare with π0's single unified model.
+      </p>
+
+      <p>
+        Beyond this, I experimented with starVLA and MimicGen for robot action data
+        augmentation, and explored reinforcement-learning-based fine-tuning as an
+        alternative approach.
+      </p>
+
+      <div class="media">
+        <video src="../assets/video/etri-sim.mp4" controls muted playsinline preload="metadata"></video>
+        <video src="../assets/video/etri-real.mp4" controls muted playsinline preload="metadata"></video>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="wrap">
+  © 2026 Minsoo Park
+</footer>
+
+</body>
+</html>
