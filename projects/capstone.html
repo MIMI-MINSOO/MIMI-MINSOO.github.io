@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imitation Learning for Long-Horizon Manipulation — Minsoo Park</title>
+<meta name="description" content="Diffusion Policy for a dual-arm pick-scan-pack task, Capstone Design at SeoulTech, Hanium ICT Mentoring.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<main class="wrap">
+  <a class="back-link" href="../index.html">&larr; Projects</a>
+
+  <article class="project detail">
+    <div class="meta">
+      <span class="org">Capstone Design, SeoulTech</span>
+      <span class="when">Hanium ICT Mentoring, Dec 2025 – present</span>
+      <div class="tags">Diffusion Policy, Imitation Learning, Dual-arm manipulation, YOLO</div>
+    </div>
+
+    <div>
+      <h3>Imitation Learning for Long-Horizon Manipulation</h3>
+
+      <p>
+        A dual-arm robot picks up an item, scans its barcode, and sets it down. The task
+        only counts as finished if several stages happen in the right order, and that
+        turned out to be where the difficulty lives. A Diffusion Policy trained on
+        demonstrations learned to scan correctly, then went back and scanned again, and
+        kept doing so indefinitely.
+      </p>
+
+      <p>
+        The camera views on the way to the scanner and on the way back are nearly
+        identical, so the policy had no way to tell which half of the task it was in.
+        I'm now conditioning the policy on an explicit stage signal, so that states which
+        look the same but call for opposite actions can be told apart.
+      </p>
+
+      <div class="media">
+        <video src="../assets/video/capstone-teleop.mp4" controls muted playsinline preload="metadata"></video>
+        <video src="../assets/video/capstone-inference.mp4" controls muted playsinline preload="metadata"></video>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="wrap">
+  © 2026 Minsoo Park
+</footer>
+
+</body>
+</html>

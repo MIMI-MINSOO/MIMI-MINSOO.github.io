@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vision-Language Models as Success Detectors for Data Collection — Minsoo Park</title>
+<meta name="description" content="A Qwen-based VLM pipeline that labels robot rollouts as success or failure on a Jetson Thor, MoAI Lab at SeoulTech.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<main class="wrap">
+  <a class="back-link" href="../index.html">&larr; Projects</a>
+
+  <article class="project detail">
+    <div class="meta">
+      <span class="org">MoAI Lab, SeoulTech</span>
+      <span class="when">Undergraduate Researcher, Dec 2025 – present</span>
+      <div class="tags">Qwen, Vision-Language Models, Jetson Thor, vLLM</div>
+    </div>
+
+    <div>
+      <h3>Vision-Language Models as Success Detectors for Data Collection</h3>
+
+      <p>
+        A policy trained on a few dozen demonstrations succeeds sometimes and fails often,
+        and someone has to sort the resulting episodes before they can be reused for
+        training. I built a pipeline that hands that judgment to a vision-language model
+        instead. A quantized Qwen model runs on a Jetson Thor next to the robot and labels
+        each rollout as success, failure, or too ambiguous to call, keeping only the
+        episodes worth learning from.
+      </p>
+
+      <p>
+        How the question is posed matters more than I expected. Giving the model a
+        reference image of the finished task, rather than describing success in words,
+        made its verdicts markedly more reliable. The model can also state why an episode
+        failed, which turns rejected data into something diagnostic rather than discarded.
+      </p>
+
+      <div class="media">
+        <img src="../assets/moai-photo.png" alt="MoAI Lab success/failure detection pipeline">
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="wrap">
+  © 2026 Minsoo Park
+</footer>
+
+</body>
+</html>
