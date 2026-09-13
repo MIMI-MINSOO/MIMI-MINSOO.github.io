@@ -221,6 +221,14 @@ h2{
   margin-top:26px;
 }
 
+/* Stack the 1st and 3rd items in the left column, 2nd item spans the right column. */
+.media.pinned-left{
+  grid-template-columns:1fr 1fr;
+}
+.media.pinned-left > :nth-child(1){grid-column:1;grid-row:1}
+.media.pinned-left > :nth-child(2){grid-column:2;grid-row:1 / span 2}
+.media.pinned-left > :nth-child(3){grid-column:1;grid-row:2}
+
 .media video,
 .media img{
   width:100%;
@@ -275,6 +283,10 @@ footer{
   .meta .tags{margin-top:12px;padding-top:12px}
   .news li{padding:14px 0}
   .contact{padding:40px 0 72px}
+  .media.pinned-left{grid-template-columns:1fr}
+  .media.pinned-left > :nth-child(1),
+  .media.pinned-left > :nth-child(2),
+  .media.pinned-left > :nth-child(3){grid-column:1;grid-row:auto}
 }
 
 @media (prefers-reduced-motion:reduce){
