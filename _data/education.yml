@@ -1,9 +1,9 @@
 items:
-  - name: Seoul National University of Science and Technology
+  - visible: true
+    name: Seoul National University of Science and Technology
     detail: Seoul, South Korea
     description: B.S. in Mechanical Systems Engineering, Major in Intelligent Robotics
     dates: Mar 2021 – Feb 2027
     note: (expected)
     logo: /assets/logos/seoultech.png
-    logo_border: false
-    visible: true
+    logo_border: true
