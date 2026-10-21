@@ -1,36 +1,36 @@
 /* Colors */
 :root {
   color-scheme: light;
-  --bg: #faf8f3;
-  --ink: #1b1a17;
-  --body: #3d3a34;
-  --muted: #746d60;
-  --line: #e3ded2;
-  --border: #d3ccbe;
-  --hover: #f0ece3;
+  --bg: #ffffff;
+  --ink: #0f1115;
+  --body: #3b4048;
+  --muted: #6b7280;
+  --line: #eceef1;
+  --border: #d9dde3;
+  --hover: #f4f5f7;
   --accent: #6e3fa6;
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #151412;
-  --ink: #f4efe5;
-  --body: #d0cabd;
-  --muted: #9a9384;
-  --line: #2c2a25;
-  --border: #3d3a33;
-  --hover: #1e1c19;
-  --accent: #c3a3ec;
+  --bg: #0c0d10;
+  --ink: #f2f3f5;
+  --body: #c4c8cf;
+  --muted: #8a919c;
+  --line: #1d2026;
+  --border: #2c3038;
+  --hover: #16181d;
+  --accent: #b99af0;
 }
 
 /* Type */
 :root {
-  --font: 'Newsreader', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
-  --text-name: 50px;
-  --text-title: 24px;
-  --text: 18px;
-  --text-sm: 16px;
-  --text-xs: 14.5px;
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --text-name: 44px;
+  --text-title: 20px;
+  --text: 17px;
+  --text-sm: 15px;
+  --text-xs: 13.5px;
 }
 
 /* Layout: rows with a small marker (News dates, logos) share --rail;
@@ -42,7 +42,7 @@
   --media: 304px;
   --media-gap: 28px;
   --portrait: 240px;
-  --radius: 10px;
+  --radius: 12px;
 }
 
 * { box-sizing: border-box; }
@@ -58,8 +58,8 @@ body {
   color: var(--body);
   font-family: var(--font);
   font-size: var(--text);
-  font-optical-sizing: auto;
-  line-height: 1.55;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -146,7 +146,7 @@ strong, b {
   height: 34px;
   padding: 0;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 999px;
   background: transparent;
   color: var(--muted);
   cursor: pointer;
@@ -185,9 +185,9 @@ strong, b {
 h1 {
   color: var(--ink);
   font-size: var(--text-name);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.035em;
 }
 
 .role {
@@ -244,7 +244,7 @@ h1 {
   height: 36px;
   padding: 0 14px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 999px;
   background: transparent;
   color: var(--ink);
   font-family: inherit;
@@ -276,8 +276,8 @@ h1 {
 
 .btn-sm {
   height: 28px;
-  padding: 0 10px;
-  border-radius: 6px;
+  padding: 0 12px;
+  border-radius: 999px;
   font-size: var(--text-xs);
 }
 
@@ -288,14 +288,12 @@ section {
 }
 
 h2 {
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
+  margin-bottom: 18px;
   color: var(--ink);
   font-size: var(--text-title);
   font-weight: 600;
   line-height: 1.3;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.015em;
 }
 
 /* News: date on the rail, text on the right. */
@@ -351,9 +349,10 @@ h2 {
   margin-top: -3px; /* puts the title's cap height on the picture's top edge */
   text-wrap: balance;
   color: var(--ink);
-  font-size: var(--text);
+  font-size: 17.5px;
   font-weight: 600;
   line-height: 1.4;
+  letter-spacing: -0.01em;
 }
 
 .entry h3 a { text-decoration: none; }
@@ -427,7 +426,8 @@ h2 {
 
 .detail h1 {
   margin-top: 10px;
-  font-size: 38px;
+  font-size: 36px;
+  letter-spacing: -0.03em;
   line-height: 1.15;
   text-wrap: balance;
 }
