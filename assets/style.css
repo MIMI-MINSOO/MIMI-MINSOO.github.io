@@ -109,12 +109,14 @@ strong, b {
   padding: 28px 24px 96px;
 }
 
-/* Top bar */
+/* Top bar: name on the left; section links and the theme toggle on the right. */
 .topbar {
   display: flex;
   align-items: center;
   gap: 24px;
   min-height: 34px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
   font-size: var(--text-sm);
 }
 
@@ -126,13 +128,22 @@ strong, b {
 .topbar a:focus,
 .topbar a:hover { color: var(--ink); }
 
+.topbar .brand {
+  margin-right: auto;
+  color: var(--ink);
+  font-size: var(--text);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.topbar a.active { color: var(--accent); }
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 34px;
   height: 34px;
-  margin-left: auto;
   padding: 0;
   border: 1px solid var(--border);
   border-radius: 8px;
