@@ -1,23 +1,30 @@
 ---
 title: Sim-to-Real Fine-tuning of Vision-Language-Action Models
-published: true
+published: false
 order: 2
 org: Field Robotics Laboratory, ETRI
 role: Research Internship
 period: Jul – Aug 2026
-summary: Fine-tuned π0 and GR00T N1.5 on Isaac Sim demonstrations, deployed them on a physical SO-101 arm, and traced why 80% success in simulation fell to about 30% on the real robot.
+summary: Fine-tuned π0 and GR00T N1.5 on Isaac Sim demonstrations, deployed them
+  on a physical SO-101 arm, and traced why 80% success in simulation fell to
+  about 30% on the real robot.
 tags:
   - π0
   - GR00T N1.5
   - Isaac Sim
   - SO-101
 thumbnail: /assets/video/etri-sim.mp4
-description: Fine-tuning π0 and GR00T N1.5 on Isaac Sim demonstrations and deploying on a physical SO-101 arm, ETRI Field Robotics Laboratory.
 media_layout: pinned-left
 media:
   - /assets/video/etri-sim.mp4
   - /assets/video/etri-real.mp4
   - /assets/video/etri-teleop.mp4
+results:
+  visible: true
+poster:
+  visible: true
+description: Fine-tuning π0 and GR00T N1.5 on Isaac Sim demonstrations and
+  deploying on a physical SO-101 arm, ETRI Field Robotics Laboratory.
 ---
 I looked at whether a vision-language-action policy trained only on simulated demonstrations can run on real hardware. I collected demonstrations in Isaac Sim through leader-follower teleoperation, then worked hands-on with vision-language-action models — training and running inference myself to deploy a fine-tuned π0 policy on a physical SO-101 arm picking up a marker and dropping it into a cup.
 
