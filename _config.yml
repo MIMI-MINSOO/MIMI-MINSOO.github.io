@@ -1,0 +1,26 @@
+# Site content lives in _data/ (profile, news, education, career, experience) and _projects/.
+# Edit it at https://app.pagescms.org (see .pages.yml) or directly in those files.
+url: https://mimi-minsoo.github.io
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name.html
+
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

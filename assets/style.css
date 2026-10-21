@@ -328,6 +328,8 @@ h2 {
 
 .entry + .entry { margin-top: 32px; }
 
+.entry.no-media { grid-template-columns: minmax(0, 1fr); }
+
 .entry-media { display: block; }
 
 .entry-media img,

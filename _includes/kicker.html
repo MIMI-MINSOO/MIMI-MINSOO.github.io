@@ -1,0 +1,2 @@
+{%- assign pj = include.project -%}
+{{ pj.org | escape }} &middot; {% if pj.role and pj.role != "" %}{{ pj.role | escape }}, {% endif %}{{ pj.period | escape }}

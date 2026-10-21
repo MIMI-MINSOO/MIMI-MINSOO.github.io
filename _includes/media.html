@@ -1,0 +1,9 @@
+{%- comment -%}
+  One picture or video. include.src is a site path; include.controls adds player controls.
+{%- endcomment -%}
+{%- assign ext = include.src | split: "." | last | downcase -%}
+{%- if ext == "mp4" or ext == "webm" or ext == "mov" or ext == "m4v" -%}
+<video src="{{ include.src | relative_url }}#t=0.1"{% if include.controls %} controls{% endif %} muted playsinline preload="metadata"></video>
+{%- else -%}
+<img src="{{ include.src | relative_url }}" alt="{{ include.alt | escape }}"{% if include.lazy %} loading="lazy"{% endif %}>
+{%- endif -%}

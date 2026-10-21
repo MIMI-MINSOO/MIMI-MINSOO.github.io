@@ -1,0 +1,18 @@
+{%- comment -%} Education / Career / Experience rows: (logo,) name · detail, description, dates. {%- endcomment -%}
+<ul class="rows">
+  {%- for row in include.items %}
+  {%- assign has_logo = false %}{% if row.logo and row.logo != "" %}{% assign has_logo = true %}{% endif %}
+  <li{% if has_logo %} class="has-logo"{% endif %}>
+    {%- if has_logo %}
+    <img class="logo{% if row.logo_border %} logo-ring{% endif %}" src="{{ row.logo | relative_url }}" alt="{{ row.name | escape }} logo" width="48" height="48">
+    {%- endif %}
+    <div>
+      <p class="row-title">{{ row.name | escape }}{% if row.detail and row.detail != "" %} <span>&middot; {{ row.detail | escape }}</span>{% endif %}</p>
+      {%- if row.description and row.description != "" %}
+      <p class="row-sub">{{ row.description | escape }}</p>
+      {%- endif %}
+    </div>
+    <p class="row-date">{{ row.dates | escape }}{% if row.note and row.note != "" %} <br><small>{{ row.note | escape }}</small>{% endif %}</p>
+  </li>
+  {%- endfor %}
+</ul>

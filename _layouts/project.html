@@ -1,0 +1,52 @@
+---
+layout: default
+---
+  <article class="detail">
+    <p class="detail-kicker">{% include kicker.html project=page %}</p>
+    <h1>{{ page.title | escape }}</h1>
+    {%- if page.tags.size > 0 %}
+    <p class="tags">{{ page.tags | join: " · " | escape }}</p>
+    {%- endif %}
+
+    <div class="prose">
+{{ content }}
+    </div>
+
+    {%- assign r = page.results %}
+    {%- if r and r.rows.size > 0 %}
+    <table class="results">
+      {%- if r.caption and r.caption != "" %}
+      <caption>{{ r.caption | escape }}</caption>
+      {%- endif %}
+      {%- if r.header.size > 0 %}
+      <thead>
+        <tr>{% for h in r.header %}<th scope="col">{{ h | escape }}</th>{% endfor %}</tr>
+      </thead>
+      {%- endif %}
+      <tbody>
+        {%- for row in r.rows %}
+        <tr>{% for cell in row.cells %}{% if forloop.first %}<th scope="row">{{ cell | escape }}</th>{% else %}<td>{{ cell | escape }}</td>{% endif %}{% endfor %}</tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+    {%- endif %}
+
+    {%- if page.media.size > 0 %}
+    <div class="media{% if page.media_layout == 'pinned-left' %} pinned-left{% endif %}">
+      {%- for item in page.media %}{% if item and item != "" %}
+      {% include media.html src=item alt=page.title controls=true lazy=true %}
+      {%- endif %}{% endfor %}
+    </div>
+    {%- endif %}
+
+    {%- if page.poster.image and page.poster.image != "" %}
+    {%- assign has_pdf = false %}{% if page.poster.pdf and page.poster.pdf != "" %}{% assign has_pdf = true %}{% endif %}
+    <section class="poster" id="poster">
+      <h2>Poster</h2>
+      <a href="{% if has_pdf %}{{ page.poster.pdf | relative_url }}{% else %}{{ page.poster.image | relative_url }}{% endif %}">
+        <img src="{{ page.poster.image | relative_url }}" alt="Poster: {{ page.title | escape }}" loading="lazy">
+      </a>
+      <p class="caption">{{ page.poster.caption | escape }}{% if has_pdf %} <a href="{{ page.poster.pdf | relative_url }}">Open PDF</a>{% endif %}</p>
+    </section>
+    {%- endif %}
+  </article>

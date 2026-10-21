@@ -1,0 +1,254 @@
+# Pages CMS (https://app.pagescms.org) editor settings for this site.
+media:
+  input: assets
+  output: /assets
+
+content:
+  - name: profile
+    label: 프로필
+    type: file
+    path: _data/profile.yml
+    fields:
+      - name: name
+        label: 이름
+        type: string
+        required: true
+      - name: affiliation
+        label: 소속 (이름 아래 한 줄)
+        type: string
+      - name: bio
+        label: 자기소개
+        description: 문단은 빈 줄로 나눠요. 굵게 쓰려면 **이렇게** 별표 두 개로 감싸요.
+        type: text
+      - name: photo
+        label: 프로필 사진
+        type: image
+      - name: email
+        label: 이메일
+        type: string
+      - name: cv
+        label: CV (PDF)
+        description: 비워두면 CV 버튼이 안 보여요.
+        type: file
+      - name: github
+        label: GitHub 주소
+        type: string
+      - name: linkedin
+        label: LinkedIn 주소
+        type: string
+      - name: description
+        label: 검색 결과에 보일 소개 (한두 문장)
+        type: text
+
+  - name: news
+    label: 뉴스
+    type: file
+    path: _data/news.yml
+    fields:
+      - name: items
+        label: 뉴스
+        description: 날짜순으로 자동 정렬돼요. 5개가 넘으면 오래된 건 "Show all" 버튼 뒤로 접혀요.
+        type: object
+        list: true
+        fields:
+          - name: date
+            label: 날짜 (일은 아무 날이나)
+            type: date
+          - name: text
+            label: 내용
+            description: 굵게 쓰려면 **이렇게** 감싸요.
+            type: string
+
+  - name: projects
+    label: 프로젝트
+    type: collection
+    path: _projects
+    filename: "{primary}.md"
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: order
+        label: 순서 (작은 숫자가 위)
+        type: number
+      - name: org
+        label: 소속
+        type: string
+      - name: role
+        label: 역할 / 프로그램 (선택)
+        type: string
+      - name: period
+        label: 기간
+        description: 예) Dec 2025 – present
+        type: string
+      - name: summary
+        label: 목록에 보일 한두 줄 요약
+        type: text
+      - name: tags
+        label: 태그
+        type: string
+        list: true
+      - name: thumbnail
+        label: 목록 썸네일 (사진 또는 영상)
+        type: file
+      - name: media_layout
+        label: 상세 페이지 사진/영상 배치
+        description: grid = 나란히 / pinned-left = 2번째 항목을 오른쪽에 크게, 1·3번째를 왼쪽에 위아래로
+        type: select
+        options:
+          values: [grid, pinned-left]
+      - name: media
+        label: 상세 페이지 사진/영상
+        description: 영상은 소리 없는 mp4(H.264)가 좋아요. 아주 큰 영상은 업로드가 실패할 수 있어요.
+        type: file
+        list: true
+      - name: results
+        label: 결과 표 (선택)
+        type: object
+        fields:
+          - name: caption
+            label: 표 설명
+            type: string
+          - name: header
+            label: 첫 줄 (열 제목)
+            type: string
+            list: true
+          - name: rows
+            label: 행
+            type: object
+            list: true
+            fields:
+              - name: cells
+                label: 칸 (첫 칸이 행 이름)
+                type: string
+                list: true
+      - name: poster
+        label: 포스터 (선택)
+        type: object
+        fields:
+          - name: image
+            label: 포스터 이미지
+            type: image
+          - name: pdf
+            label: 포스터 PDF
+            type: file
+          - name: caption
+            label: 설명
+            type: string
+      - name: description
+        label: 검색 결과에 보일 소개 (한두 문장)
+        type: text
+      - name: body
+        label: 본문
+        type: rich-text
+
+  - name: education
+    label: 학력
+    type: file
+    path: _data/education.yml
+    fields:
+      - name: items
+        label: 항목
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: 이름 (굵게)
+            type: string
+            required: true
+          - name: detail
+            label: 이름 옆 회색 글씨
+            type: string
+          - name: description
+            label: 아래 줄 설명
+            type: string
+          - name: dates
+            label: 기간
+            description: 예) Mar 2021 – Feb 2027
+            type: string
+          - name: note
+            label: 기간 아래 작은 글씨 (선택)
+            description: 예) (expected)
+            type: string
+          - name: logo
+            label: 로고
+            type: image
+          - name: logo_border
+            label: 로고에 테두리 원 두르기
+            description: 흰 배경 로고는 켜두면 원이 잘 보여요.
+            type: boolean
+
+  - name: career
+    label: 경력
+    type: file
+    path: _data/career.yml
+    fields:
+      - name: items
+        label: 항목
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: 이름 (굵게)
+            type: string
+            required: true
+          - name: detail
+            label: 이름 옆 회색 글씨
+            type: string
+          - name: description
+            label: 아래 줄 설명
+            type: string
+          - name: dates
+            label: 기간
+            description: 예) Mar 2021 – Feb 2027
+            type: string
+          - name: note
+            label: 기간 아래 작은 글씨 (선택)
+            description: 예) (expected)
+            type: string
+          - name: logo
+            label: 로고
+            type: image
+          - name: logo_border
+            label: 로고에 테두리 원 두르기
+            description: 흰 배경 로고는 켜두면 원이 잘 보여요.
+            type: boolean
+
+
+  - name: experience
+    label: 경험
+    type: file
+    path: _data/experience.yml
+    fields:
+      - name: items
+        label: 항목
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: 이름 (굵게)
+            type: string
+            required: true
+          - name: detail
+            label: 이름 옆 회색 글씨
+            type: string
+          - name: description
+            label: 아래 줄 설명
+            type: string
+          - name: dates
+            label: 기간
+            description: 예) Mar 2021 – Feb 2027
+            type: string
+          - name: note
+            label: 기간 아래 작은 글씨 (선택)
+            description: 예) (expected)
+            type: string
+          - name: logo
+            label: 로고
+            type: image
+          - name: logo_border
+            label: 로고에 테두리 원 두르기
+            description: 흰 배경 로고는 켜두면 원이 잘 보여요.
+            type: boolean
+
