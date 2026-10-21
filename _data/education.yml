@@ -6,3 +6,4 @@ items:
     note: (expected)
     logo: /assets/logos/seoultech.png
     logo_border: false
+    visible: true

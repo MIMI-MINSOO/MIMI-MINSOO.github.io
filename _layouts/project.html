@@ -13,7 +13,7 @@ layout: default
     </div>
 
     {%- assign r = page.results %}
-    {%- if r and r.rows.size > 0 %}
+    {%- if r and r.visible != false and r.rows.size > 0 %}
     <table class="results">
       {%- if r.caption and r.caption != "" %}
       <caption>{{ r.caption | escape }}</caption>
@@ -39,7 +39,7 @@ layout: default
     </div>
     {%- endif %}
 
-    {%- if page.poster.image and page.poster.image != "" %}
+    {%- if page.poster.visible != false and page.poster.image and page.poster.image != "" %}
     {%- assign has_pdf = false %}{% if page.poster.pdf and page.poster.pdf != "" %}{% assign has_pdf = true %}{% endif %}
     <section class="poster" id="poster">
       <h2>Poster</h2>

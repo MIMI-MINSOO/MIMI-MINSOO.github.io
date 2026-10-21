@@ -1,5 +1,6 @@
 ---
 title: Imitation Learning for Long-Horizon Manipulation
+published: true
 order: 1
 org: Capstone Design, SeoulTech
 role: Hanium ICT Mentoring
@@ -14,6 +15,7 @@ tags:
 thumbnail: /assets/capstone-hardware.png
 description: A stage-conditioned Diffusion Policy for a 16-DOF dual-arm checkout robot that picks, scans and bags items, Capstone Design at SeoulTech, Hanium ICT Mentoring.
 results:
+  visible: true
   caption: Success rate, same 300 demonstrations
   header:
     - Task
@@ -28,6 +30,7 @@ media:
   - /assets/video/capstone-teleop.mp4
   - /assets/video/capstone-inference.mp4
 poster:
+  visible: true
   image: /assets/capstone-poster.jpg
   pdf: /assets/capstone-poster.pdf
   caption: Poster for the 2026 Undergraduate Research Conference (in Korean).

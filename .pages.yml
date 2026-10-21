@@ -51,6 +51,11 @@ content:
         type: object
         list: true
         fields:
+          - name: visible
+            label: 사이트에 표시
+            description: 체크를 끄면 지우지 않고 사이트에서만 숨겨요.
+            type: boolean
+            default: true
           - name: date
             label: 날짜 (일은 아무 날이나)
             type: date
@@ -69,6 +74,11 @@ content:
         label: 제목
         type: string
         required: true
+      - name: published
+        label: 사이트에 표시
+        description: 체크를 끄면 목록과 상세 페이지에서 모두 숨겨요 (파일은 그대로 남아요).
+        type: boolean
+        default: true
       - name: order
         label: 순서 (작은 숫자가 위)
         type: number
@@ -107,6 +117,10 @@ content:
         label: 결과 표 (선택)
         type: object
         fields:
+          - name: visible
+            label: 결과 표 표시
+            type: boolean
+            default: true
           - name: caption
             label: 표 설명
             type: string
@@ -127,6 +141,10 @@ content:
         label: 포스터 (선택)
         type: object
         fields:
+          - name: visible
+            label: 포스터 표시
+            type: boolean
+            default: true
           - name: image
             label: 포스터 이미지
             type: image
@@ -153,6 +171,11 @@ content:
         type: object
         list: true
         fields:
+          - name: visible
+            label: 사이트에 표시
+            description: 체크를 끄면 지우지 않고 사이트에서만 숨겨요.
+            type: boolean
+            default: true
           - name: name
             label: 이름 (굵게)
             type: string
@@ -189,6 +212,11 @@ content:
         type: object
         list: true
         fields:
+          - name: visible
+            label: 사이트에 표시
+            description: 체크를 끄면 지우지 않고 사이트에서만 숨겨요.
+            type: boolean
+            default: true
           - name: name
             label: 이름 (굵게)
             type: string
@@ -226,6 +254,11 @@ content:
         type: object
         list: true
         fields:
+          - name: visible
+            label: 사이트에 표시
+            description: 체크를 끄면 지우지 않고 사이트에서만 숨겨요.
+            type: boolean
+            default: true
           - name: name
             label: 이름 (굵게)
             type: string

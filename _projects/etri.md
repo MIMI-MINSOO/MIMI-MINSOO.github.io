@@ -1,5 +1,6 @@
 ---
 title: Sim-to-Real Fine-tuning of Vision-Language-Action Models
+published: true
 order: 2
 org: Field Robotics Laboratory, ETRI
 role: Research Internship

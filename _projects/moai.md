@@ -1,5 +1,6 @@
 ---
 title: Vision-Language Models as Success Detectors for Data Collection
+published: true
 order: 3
 org: MoAI Lab, SeoulTech
 role: Undergraduate Researcher

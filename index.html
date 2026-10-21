@@ -34,7 +34,7 @@ layout: default
 
     <section id="news">
       <h2>News</h2>
-      {%- assign news = site.data.news.items | sort: "date" | reverse %}
+      {%- assign news = site.data.news.items | where_exp: "i", "i.visible != false" | sort: "date" | reverse %}
       <ul class="news" data-limit="5">
         {%- for item in news %}
         <li><time datetime="{{ item.date | date: '%Y-%m' }}">{{ item.date | date: "%b %Y" }}</time>{{ item.text | markdownify }}</li>
@@ -69,24 +69,32 @@ layout: default
       {%- endfor %}
     </section>
 
+    {%- comment %} Items whose "사이트에 표시" box is unticked (visible: false) are left out. {% endcomment %}
+    {%- assign education = site.data.education.items | where_exp: "i", "i.visible != false" %}
+    {%- assign career = site.data.career.items | where_exp: "i", "i.visible != false" %}
+    {%- assign experience = site.data.experience.items | where_exp: "i", "i.visible != false" %}
+
+    {%- if education.size > 0 %}
+
     <section id="education">
       <h2>Education</h2>
-      {% include rows.html items=site.data.education.items %}
-    </section>
-
-    {%- if site.data.career.items.size > 0 %}
-
-    <section id="career">
-      <h2>Career</h2>
-      {% include rows.html items=site.data.career.items %}
+      {% include rows.html items=education %}
     </section>
     {%- endif %}
 
-    {%- if site.data.experience.items.size > 0 %}
+    {%- if career.size > 0 %}
+
+    <section id="career">
+      <h2>Career</h2>
+      {% include rows.html items=career %}
+    </section>
+    {%- endif %}
+
+    {%- if experience.size > 0 %}
 
     <section id="experience">
       <h2>Experience</h2>
-      {% include rows.html items=site.data.experience.items %}
+      {% include rows.html items=experience %}
     </section>
     {%- endif %}
 

@@ -5,3 +5,4 @@ items:
     dates: Jul – Aug 2026
     logo: /assets/logos/etri.png
     logo_border: true
+    visible: true

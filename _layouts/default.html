@@ -37,11 +37,16 @@
     <a class="brand" href="{{ '/' | relative_url }}">{{ p.name | escape }}</a>
     <a class="nav-section" href="{{ prefix }}#news">News</a>
     <a class="nav-section{% if on_project %} active{% endif %}" href="{{ prefix }}#projects"{% if on_project %} aria-current="page"{% endif %}>Projects</a>
+    {%- assign nav_education = site.data.education.items | where_exp: "i", "i.visible != false" %}
+    {%- assign nav_career = site.data.career.items | where_exp: "i", "i.visible != false" %}
+    {%- assign nav_experience = site.data.experience.items | where_exp: "i", "i.visible != false" %}
+    {%- if nav_education.size > 0 %}
     <a class="nav-section" href="{{ prefix }}#education">Education</a>
-    {%- if site.data.career.items.size > 0 %}
+    {%- endif %}
+    {%- if nav_career.size > 0 %}
     <a class="nav-section" href="{{ prefix }}#career">Career</a>
     {%- endif %}
-    {%- if site.data.experience.items.size > 0 %}
+    {%- if nav_experience.size > 0 %}
     <a class="nav-section" href="{{ prefix }}#experience">Experience</a>
     {%- endif %}
     <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">

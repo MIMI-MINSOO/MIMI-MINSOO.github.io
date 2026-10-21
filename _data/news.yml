@@ -1,7 +1,10 @@
 items:
   - date: 2026-09-01
     text: Started a research internship at the **MLCS Lab, Yonsei University**.
+    visible: true
   - date: 2026-08-01
     text: Completed my research internship at the Field Robotics Laboratory, ETRI.
+    visible: true
   - date: 2025-12-01
     text: Joined MoAI Lab at SeoulTech as an undergraduate researcher.
+    visible: true
