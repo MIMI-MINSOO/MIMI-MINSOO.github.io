@@ -4,28 +4,41 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vision-Language Models as Success Detectors for Data Collection — Minsoo Park</title>
-<meta name="description" content="A Qwen-based VLM pipeline that labels robot rollouts as success or failure on a Jetson Thor, MoAI Lab at SeoulTech.">
+<meta name="description" content="A Qwen-based VLM pipeline on a Jetson Thor that labels Unitree G1 humanoid rollouts as success or failure, MoAI Lab at SeoulTech.">
+
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+<script>
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  })();
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
+<div class="page">
 
-<main class="wrap">
-  <a class="back-link" href="../index.html">&larr; Projects</a>
+  <nav class="topbar" aria-label="Site">
+    <a href="../index.html#projects">&larr; Minsoo Park</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+  </nav>
 
-  <article class="project detail">
-    <div class="meta">
-      <span class="org">MoAI Lab, SeoulTech</span>
-      <span class="when">Undergraduate Researcher, Dec 2025 – present</span>
-      <div class="tags">Qwen, Vision-Language Models, Jetson Thor, vLLM</div>
-    </div>
+  <article class="detail">
+    <p class="detail-kicker">MoAI Lab, SeoulTech &middot; Undergraduate Researcher, Dec 2025 &ndash; Aug 2026</p>
+    <h1>Vision-Language Models as Success Detectors for Data Collection</h1>
+    <p class="tags">Qwen &middot; Vision-Language Models &middot; Jetson Thor &middot; vLLM</p>
 
-    <div>
-      <h3>Vision-Language Models as Success Detectors for Data Collection</h3>
-
+    <div class="prose">
       <p>
         A policy trained on a few dozen demonstrations succeeds sometimes and fails often,
         and someone has to sort the resulting episodes before they can be reused for
@@ -41,17 +54,18 @@
         made its verdicts markedly more reliable. The model can also state why an episode
         failed, which turns rejected data into something diagnostic rather than discarded.
       </p>
+    </div>
 
-      <div class="media">
-        <img src="../assets/moai-photo.png" alt="MoAI Lab success/failure detection pipeline">
-      </div>
+    <div class="media">
+      <img src="../assets/moai-photo.png" alt="MoAI Lab success/failure detection pipeline">
     </div>
   </article>
-</main>
 
-<footer class="wrap">
-  © 2026 Minsoo Park
-</footer>
+  <footer>
+    &copy; Minsoo Park<span id="updated"></span>
+  </footer>
 
+</div>
+<script src="../assets/site.js"></script>
 </body>
 </html>
