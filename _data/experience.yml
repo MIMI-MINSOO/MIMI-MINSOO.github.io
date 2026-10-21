@@ -1,36 +1,37 @@
 items:
-  - name: MLCS Lab
+  - visible: true
+    name: MLCS Lab
     detail: Yonsei University
     description: Research Intern
     dates: Sep 2026 – present
     logo: /assets/logos/yonsei.png
     logo_border: false
-    visible: true
-  - name: MoAI Lab
+  - visible: true
+    name: MoAI Lab
     detail: Motion & Action Intelligence Lab, SeoulTech
-    description: Undergraduate Researcher
+    description: Research Intern
     dates: Dec 2025 – Aug 2026
     logo: /assets/logos/moai.png
     logo_border: true
-    visible: true
-  - name: 41st Student Council
+  - visible: true
+    name: 41st Student Council
     detail: SeoulTech
-    description: Head of Cultural Planning · Led planning for the annual university festival (approx. 15,000 attendees)
+    description: Head of Cultural Planning · Led planning for the annual university
+      festival (approx. 15,000 attendees)
     dates: Mar – Dec 2025
     logo: /assets/logos/student-council.png
     logo_border: true
-    visible: true
-  - name: 18th College of Engineering Student Council
+  - visible: true
+    name: 18th College of Engineering Student Council
     detail: SeoulTech
     description: Director of Cultural Planning
     dates: Mar – Dec 2024
     logo: /assets/logos/engineering-council.png
     logo_border: true
-    visible: true
-  - name: Greenfield
+  - visible: true
+    name: Greenfield
     detail: Intelligent Robotics Football Club, SeoulTech
     description: Member
     dates: Mar 2021 – Dec 2026
     logo: /assets/logos/greenfield.png
     logo_border: true
-    visible: true
