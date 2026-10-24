@@ -5,15 +5,19 @@ order: 1
 org: Capstone Design, SeoulTech
 role: Hanium ICT Mentoring
 period: Dec 2025 – present
-summary: Leading a team on a 16-DOF dual-arm checkout robot with a self-designed neck that picks, scans and bags items. Conditioning a Diffusion Policy on the task stage raised full-task success from 0% to 45%.
+summary: Leading a team on a 16-DOF dual-arm checkout robot with a self-designed
+  neck that picks, scans and bags items. Conditioning a Diffusion Policy on the
+  task stage raised full-task success from 0% to 45%.
 tags:
   - Diffusion Policy
   - Stage Conditioning
   - VR Teleoperation
   - Dual-arm manipulation
-  - YOLO
 thumbnail: /assets/capstone-hardware.png
-description: A stage-conditioned Diffusion Policy for a 16-DOF dual-arm checkout robot that picks, scans and bags items, Capstone Design at SeoulTech, Hanium ICT Mentoring.
+media_layout: grid
+media:
+  - /assets/video/capstone-teleop.mp4
+  - /assets/video/capstone-inference.mp4
 results:
   visible: true
   caption: Success rate, same 300 demonstrations
@@ -22,18 +26,26 @@ results:
     - Diffusion Policy
     - Stage-conditioned (ours)
   rows:
-    - cells: [Scan, 20%, 50%]
-    - cells: [Bagging, 20%, 70%]
-    - cells: [Full task, 0%, 45%]
-media_layout: grid
-media:
-  - /assets/video/capstone-teleop.mp4
-  - /assets/video/capstone-inference.mp4
+    - cells:
+        - Scan
+        - 20%
+        - 50%
+    - cells:
+        - Bagging
+        - 20%
+        - 70%
+    - cells:
+        - Full task
+        - 0%
+        - 45%
 poster:
   visible: true
   image: /assets/capstone-poster.jpg
   pdf: /assets/capstone-poster.pdf
   caption: Poster for the 2026 Undergraduate Research Conference (in Korean).
+description: A stage-conditioned Diffusion Policy for a 16-DOF dual-arm checkout
+  robot that picks, scans and bags items, Capstone Design at SeoulTech, Hanium
+  ICT Mentoring.
 ---
 The goal is a checkout robot that learns from demonstrations alone: a dual-arm system picks up each ordered item, scans its barcode, and packs it into a bag. I lead a four-person team on the project, which splits the job into two policies, one for scanning and one for bagging, that together make up a long-horizon task.
 
