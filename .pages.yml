@@ -13,8 +13,21 @@ content:
         label: 이름
         type: string
         required: true
+      - name: greeting
+        label: 첫 화면 인사말 (이름 위 작은 글씨)
+        description: 예) Hey! I am
+        type: string
+      - name: roles_prefix
+        label: 첫 화면 타이핑 앞 문구
+        description: 예) I'm a
+        type: string
+      - name: roles
+        label: 첫 화면 타이핑 문구
+        description: 차례로 타이핑되며 바뀌어요. 하나만 넣으면 고정돼요.
+        type: string
+        list: true
       - name: affiliation
-        label: 소속 (이름 아래 한 줄)
+        label: 소속 (About Me 아래 한 줄)
         type: string
       - name: bio
         label: 자기소개
@@ -36,6 +49,13 @@ content:
       - name: linkedin
         label: LinkedIn 주소
         type: string
+      - name: location
+        label: 위치 (선택)
+        description: 예) Seoul, South Korea. 비워두면 안 보여요.
+        type: string
+      - name: projects_intro
+        label: Projects 제목 아래 소개 문장 (선택)
+        type: text
       - name: description
         label: 검색 결과에 보일 소개 (한두 문장)
         type: text

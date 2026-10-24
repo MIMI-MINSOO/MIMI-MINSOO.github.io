@@ -1,18 +1,22 @@
-{%- comment -%} Education / Career / Experience rows: (logo,) name · detail, description, dates. {%- endcomment -%}
-<ul class="rows">
+{%- comment -%} Education / Career / Experience: logo (or a dot), dates, name, detail, description. {%- endcomment -%}
+<ul class="timeline">
   {%- for row in include.items %}
-  {%- assign has_logo = false %}{% if row.logo and row.logo != "" %}{% assign has_logo = true %}{% endif %}
-  <li{% if has_logo %} class="has-logo"{% endif %}>
-    {%- if has_logo %}
-    <img class="logo{% if row.logo_border %} logo-ring{% endif %}" src="{{ row.logo | relative_url }}" alt="{{ row.name | escape }} logo" width="48" height="48">
+  <li>
+    {%- if row.logo and row.logo != "" %}
+    <img class="tl-logo{% if row.logo_border %} ring{% endif %}" src="{{ row.logo | relative_url }}" alt="{{ row.name | escape }} logo" width="48" height="48">
+    {%- else %}
+    <span class="tl-icon" aria-hidden="true"></span>
     {%- endif %}
     <div>
-      <p class="row-title">{{ row.name | escape }}{% if row.detail and row.detail != "" %} <span>&middot; {{ row.detail | escape }}</span>{% endif %}</p>
+      <p class="tl-date">{{ row.dates | escape }}{% if row.note and row.note != "" %} <small>{{ row.note | escape }}</small>{% endif %}</p>
+      <h3 class="tl-title">{{ row.name | escape }}</h3>
+      {%- if row.detail and row.detail != "" %}
+      <p class="tl-org">{{ row.detail | escape }}</p>
+      {%- endif %}
       {%- if row.description and row.description != "" %}
-      <p class="row-sub">{{ row.description | escape }}</p>
+      <p class="tl-desc">{{ row.description | escape }}</p>
       {%- endif %}
     </div>
-    <p class="row-date">{{ row.dates | escape }}{% if row.note and row.note != "" %} <br><small>{{ row.note | escape }}</small>{% endif %}</p>
   </li>
   {%- endfor %}
 </ul>

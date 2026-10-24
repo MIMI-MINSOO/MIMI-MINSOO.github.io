@@ -2,100 +2,142 @@
 layout: default
 ---
 {%- assign p = site.data.profile -%}
-  <header class="intro">
-    <div class="intro-text">
-      <h1>{{ p.name | escape }}</h1>
-      <p class="role">{{ p.affiliation | escape }}</p>
-      {{ p.bio | markdownify }}
+{%- assign roles = p.roles | where_exp: "r", "r != ''" -%}
+<main>
+
+  <section class="hero" id="home">
+    <div class="container">
+      <p class="hero-greeting">{{ p.greeting | default: "Hey! I am" | escape }}</p>
+      <h1 class="hero-name">{{ p.name | escape }}</h1>
+      {%- if roles.size > 0 %}
+      <p class="hero-roles">{{ p.roles_prefix | default: "I'm a" | escape }} <span class="typed" data-roles="{{ roles | jsonify | escape }}">{{ roles.first | escape }}</span></p>
+      {%- endif %}
     </div>
-    <div class="portrait"><img src="{{ p.photo | relative_url }}" alt="{{ p.name | escape }}"></div>
-  </header>
+    <a class="scroll-down" href="#about" aria-label="Scroll to About">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+    </a>
+  </section>
 
-  <ul class="links">
-    {%- if p.email and p.email != "" %}
-    <li><a class="btn" href="mailto:{{ p.email }}">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Email</a></li>
-    {%- endif %}
-    {%- if p.cv and p.cv != "" %}
-    <li><a class="btn" href="{{ p.cv | relative_url }}">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>CV</a></li>
-    {%- endif %}
-    {%- if p.github and p.github != "" %}
-    <li><a class="btn" href="{{ p.github }}">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.9c-2.78.62-3.37-1.21-3.37-1.21-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9l-.01 2.81c0 .27.18.6.69.49A10.03 10.03 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>GitHub</a></li>
-    {%- endif %}
-    {%- if p.linkedin and p.linkedin != "" %}
-    <li><a class="btn" href="{{ p.linkedin }}">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
-    {%- endif %}
-  </ul>
-
-  <main>
-
-    <section id="news">
-      <h2>News</h2>
-      {%- assign news = site.data.news.items | where_exp: "i", "i.visible != false" | sort: "date" | reverse %}
-      <ul class="news" data-limit="5">
-        {%- for item in news %}
-        <li><time datetime="{{ item.date | date: '%Y-%m' }}">{{ item.date | date: "%b %Y" }}</time>{{ item.text | markdownify }}</li>
-        {%- endfor %}
-      </ul>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      {%- assign projects = site.projects | sort: "order" %}
-      {%- for pj in projects %}
-
-      {%- assign has_thumb = false %}{% if pj.thumbnail and pj.thumbnail != "" %}{% assign has_thumb = true %}{% endif %}
-      <article class="entry{% unless has_thumb %} no-media{% endunless %}">
-        {%- if has_thumb %}
-        <a class="entry-media" href="{{ pj.url | relative_url }}" aria-hidden="true" tabindex="-1">
-          {% include media.html src=pj.thumbnail alt="" %}
-        </a>
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-photo"><img src="{{ p.photo | relative_url }}" alt="{{ p.name | escape }}"></div>
+      <div class="about-text">
+        <h2 class="section-title">About Me</h2>
+        {%- if p.affiliation and p.affiliation != "" %}
+        <p class="about-affiliation">{{ p.affiliation | escape }}</p>
         {%- endif %}
-        <div class="entry-text">
-          <h3><a href="{{ pj.url | relative_url }}">{{ pj.title | escape }}</a></h3>
-          <p class="entry-meta">{% include kicker.html project=pj %}</p>
-          <p class="summary">{{ pj.summary | escape }}</p>
-          {%- if pj.tags.size > 0 %}
-          <p class="tags">{{ pj.tags | join: " · " | escape }}</p>
+        {{ p.bio | markdownify }}
+        <ul class="about-info">
+          <li><span>Name</span><span>{{ p.name | escape }}</span></li>
+          {%- if p.email and p.email != "" %}
+          <li><span>Email</span><span><a href="mailto:{{ p.email }}">{{ p.email | escape }}</a></span></li>
           {%- endif %}
-          <ul class="actions">
-            <li><a class="btn btn-sm" href="{{ pj.url | relative_url }}">Details</a></li>
+          {%- if p.location and p.location != "" %}
+          <li><span>Location</span><span>{{ p.location | escape }}</span></li>
+          {%- endif %}
+        </ul>
+        <ul class="links">
+          {%- if p.email and p.email != "" %}
+          <li><a class="btn btn-primary" href="mailto:{{ p.email }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Email</a></li>
+          {%- endif %}
+          {%- if p.cv and p.cv != "" %}
+          <li><a class="btn" href="{{ p.cv | relative_url }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>CV</a></li>
+          {%- endif %}
+          {%- if p.github and p.github != "" %}
+          <li><a class="btn" href="{{ p.github }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.9c-2.78.62-3.37-1.21-3.37-1.21-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9l-.01 2.81c0 .27.18.6.69.49A10.03 10.03 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>GitHub</a></li>
+          {%- endif %}
+          {%- if p.linkedin and p.linkedin != "" %}
+          <li><a class="btn" href="{{ p.linkedin }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
+          {%- endif %}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="container">
+      <h2 class="section-title center">Projects</h2>
+      {%- if p.projects_intro and p.projects_intro != "" %}
+      <p class="section-lead">{{ p.projects_intro | escape }}</p>
+      {%- endif %}
+    </div>
+    {%- assign projects = site.projects | sort: "order" %}
+    <div class="tiles">
+      {%- for pj in projects %}
+      <a class="tile" href="{{ pj.url | relative_url }}">
+        {%- if pj.thumbnail and pj.thumbnail != "" %}
+        {% include media.html src=pj.thumbnail alt="" %}
+        {%- endif %}
+        <div class="tile-overlay">
+          <p class="tile-meta">{{ pj.org | escape }} &middot; {{ pj.period | escape }}</p>
+          <h3 class="tile-title">{{ pj.title | escape }}</h3>
+          <p class="tile-summary">{{ pj.summary | escape }}</p>
+          <span class="tile-more">View project</span>
+        </div>
+      </a>
+      {%- endfor %}
+    </div>
+  </section>
+
+  {%- comment %} Items whose "사이트에 표시" box is unticked (visible: false) are left out. {% endcomment %}
+  {%- assign news = site.data.news.items | where_exp: "i", "i.visible != false" | sort: "date" | reverse %}
+  {%- assign education = site.data.education.items | where_exp: "i", "i.visible != false" %}
+  {%- assign career = site.data.career.items | where_exp: "i", "i.visible != false" %}
+  {%- assign experience = site.data.experience.items | where_exp: "i", "i.visible != false" %}
+
+  <section class="resume" id="resume">
+    <div class="container resume-grid">
+      <nav class="resume-nav" aria-label="Resume sections">
+        {%- if news.size > 0 %}<a href="#news">News</a>{% endif %}
+        {%- if education.size > 0 %}<a href="#education">Education</a>{% endif %}
+        {%- if career.size > 0 %}<a href="#career">Career</a>{% endif %}
+        {%- if experience.size > 0 %}<a href="#experience">Experience</a>{% endif %}
+      </nav>
+
+      <div class="resume-body">
+        {%- if news.size > 0 %}
+        <div class="resume-block" id="news">
+          <h2 class="resume-title">News</h2>
+          <ul class="timeline news" data-limit="5">
+            {%- for item in news %}
+            <li>
+              <span class="tl-icon small" aria-hidden="true"></span>
+              <div>
+                <p class="tl-date"><time datetime="{{ item.date | date: '%Y-%m' }}">{{ item.date | date: "%b %Y" }}</time></p>
+                <div class="news-text">{{ item.text | markdownify }}</div>
+              </div>
+            </li>
+            {%- endfor %}
           </ul>
         </div>
-      </article>
-      {%- endfor %}
-    </section>
+        {%- endif %}
 
-    {%- comment %} Items whose "사이트에 표시" box is unticked (visible: false) are left out. {% endcomment %}
-    {%- assign education = site.data.education.items | where_exp: "i", "i.visible != false" %}
-    {%- assign career = site.data.career.items | where_exp: "i", "i.visible != false" %}
-    {%- assign experience = site.data.experience.items | where_exp: "i", "i.visible != false" %}
+        {%- if education.size > 0 %}
+        <div class="resume-block" id="education">
+          <h2 class="resume-title">Education</h2>
+          {% include rows.html items=education %}
+        </div>
+        {%- endif %}
 
-    {%- if education.size > 0 %}
+        {%- if career.size > 0 %}
+        <div class="resume-block" id="career">
+          <h2 class="resume-title">Career</h2>
+          {% include rows.html items=career %}
+        </div>
+        {%- endif %}
 
-    <section id="education">
-      <h2>Education</h2>
-      {% include rows.html items=education %}
-    </section>
-    {%- endif %}
+        {%- if experience.size > 0 %}
+        <div class="resume-block" id="experience">
+          <h2 class="resume-title">Experience</h2>
+          {% include rows.html items=experience %}
+        </div>
+        {%- endif %}
+      </div>
+    </div>
+  </section>
 
-    {%- if career.size > 0 %}
-
-    <section id="career">
-      <h2>Career</h2>
-      {% include rows.html items=career %}
-    </section>
-    {%- endif %}
-
-    {%- if experience.size > 0 %}
-
-    <section id="experience">
-      <h2>Experience</h2>
-      {% include rows.html items=experience %}
-    </section>
-    {%- endif %}
-
-  </main>
+</main>

@@ -1,4 +1,10 @@
 name: Minsoo Park
+greeting: Hey! I am
+roles_prefix: I'm a
+roles:
+  - Robot Learning Researcher
+  - Research Intern at MLCS Lab
+  - Robotics Undergraduate at SeoulTech
 affiliation: Intelligent Robotics, SeoulTech · MLCS Lab, Yonsei University
 description: Minsoo Park is an undergraduate in Intelligent Robotics at SeoulTech and a Research Intern at the MLCS Lab, Yonsei University, working on robot manipulation, imitation learning, and vision-language-action models.
 photo: /assets/profile.jpg
@@ -10,3 +16,5 @@ email: alstneowkd@naver.com
 cv: ""
 github: https://github.com/MIMI-MINSOO
 linkedin: https://www.linkedin.com/in/minsoo-park-74b51a393/
+location: ""
+projects_intro: Robot learning projects, from collecting demonstrations to deploying policies on real hardware.

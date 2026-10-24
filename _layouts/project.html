@@ -1,11 +1,16 @@
 ---
 layout: default
 ---
+<main>
   <article class="detail">
     <p class="detail-kicker">{% include kicker.html project=page %}</p>
     <h1>{{ page.title | escape }}</h1>
     {%- if page.tags.size > 0 %}
-    <p class="tags">{{ page.tags | join: " · " | escape }}</p>
+    <ul class="chips">
+      {%- for tag in page.tags %}{% if tag and tag != "" %}
+      <li>{{ tag | escape }}</li>
+      {%- endif %}{% endfor %}
+    </ul>
     {%- endif %}
 
     <div class="prose">
@@ -50,3 +55,4 @@ layout: default
     </section>
     {%- endif %}
   </article>
+</main>

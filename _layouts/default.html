@@ -2,6 +2,10 @@
 {%- assign on_project = false -%}
 {%- if page.collection == "projects" -%}{%- assign on_project = true -%}{%- endif -%}
 {%- if on_project -%}{%- assign prefix = "/" | relative_url -%}{%- else -%}{%- assign prefix = "" -%}{%- endif -%}
+{%- assign nav_news = site.data.news.items | where_exp: "i", "i.visible != false" -%}
+{%- assign nav_education = site.data.education.items | where_exp: "i", "i.visible != false" -%}
+{%- assign nav_career = site.data.career.items | where_exp: "i", "i.visible != false" -%}
+{%- assign nav_experience = site.data.experience.items | where_exp: "i", "i.visible != false" -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,41 +31,46 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 </head>
 <body>
-<div class="page">
 
-  <nav class="topbar" aria-label="Sections">
-    <a class="brand" href="{{ '/' | relative_url }}">{{ p.name | escape }}</a>
-    <a class="nav-section" href="{{ prefix }}#news">News</a>
-    <a class="nav-section{% if on_project %} active{% endif %}" href="{{ prefix }}#projects"{% if on_project %} aria-current="page"{% endif %}>Projects</a>
-    {%- assign nav_education = site.data.education.items | where_exp: "i", "i.visible != false" %}
-    {%- assign nav_career = site.data.career.items | where_exp: "i", "i.visible != false" %}
-    {%- assign nav_experience = site.data.experience.items | where_exp: "i", "i.visible != false" %}
-    {%- if nav_education.size > 0 %}
-    <a class="nav-section" href="{{ prefix }}#education">Education</a>
-    {%- endif %}
-    {%- if nav_career.size > 0 %}
-    <a class="nav-section" href="{{ prefix }}#career">Career</a>
-    {%- endif %}
-    {%- if nav_experience.size > 0 %}
-    <a class="nav-section" href="{{ prefix }}#experience">Experience</a>
-    {%- endif %}
+<header class="site-header">
+  <div class="container nav-inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ p.name | escape }}"><span class="brand-mark" aria-hidden="true">{{ p.name | slice: 0 | escape }}</span><span aria-hidden="true">{{ p.name | slice: 1, 200 | escape }}</span></a>
+    <nav class="nav" id="site-nav" aria-label="Sections">
+      <a href="{{ prefix }}#about">About</a>
+      <a href="{{ prefix }}#projects"{% if on_project %} class="active" aria-current="page"{% endif %}>Projects</a>
+      {%- if nav_news.size > 0 %}
+      <a href="{{ prefix }}#news">News</a>
+      {%- endif %}
+      {%- if nav_education.size > 0 %}
+      <a href="{{ prefix }}#education">Education</a>
+      {%- endif %}
+      {%- if nav_career.size > 0 %}
+      <a href="{{ prefix }}#career">Career</a>
+      {%- endif %}
+      {%- if nav_experience.size > 0 %}
+      <a href="{{ prefix }}#experience">Experience</a>
+      {%- endif %}
+    </nav>
     <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
       <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
     </button>
-  </nav>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-controls="site-nav" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
 
 {{ content }}
 
-  <footer>
-    &copy; {{ p.name | escape }}<span id="updated"></span>
-  </footer>
+<footer class="site-footer">
+  <div class="container">&copy; {{ p.name | escape }}<span id="updated"></span></div>
+</footer>
 
-</div>
 <script src="{{ '/assets/site.js' | relative_url }}"></script>
 </body>
 </html>
