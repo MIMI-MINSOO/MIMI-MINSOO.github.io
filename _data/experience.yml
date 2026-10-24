@@ -1,7 +1,7 @@
 items:
   - visible: true
     name: MLCS Lab
-    detail: Yonsei University
+    detail: Machine Learning and Control Systems Lab, Yonsei University
     description: Research Intern
     dates: Sep 2026 – present
     logo: /assets/logos/yonsei.png
